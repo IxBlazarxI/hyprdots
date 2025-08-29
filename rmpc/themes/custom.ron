@@ -1,0 +1,95 @@
+#![enable(implicit_some)]
+#![enable(unwrap_newtypes)]
+#![enable(unwrap_variant_newtypes)]
+(
+    default_album_art_path: None,
+    draw_borders: true,
+    show_song_table_header: false,
+    symbols: (song: "💿", dir: "🗂️", playlist: "📀", marker: ">"),
+    layout: Split(
+        direction: Vertical,
+        panes: [
+            (
+                pane: Pane(Header),
+                size: "1",
+            ),
+            (
+                pane: Pane(TabContent),
+                size: "110%",
+            ),
+            (
+                pane: Pane(ProgressBar),
+                size: "1",
+            ),
+        ],
+    ),
+    lyrics: (
+        genius_token: "bkJJQ4_4mB5TEJi-QpMmOvJx1sL-09dWeYgick2g3iMPCNxLriulTVg7I38C4eTYCeN9ZgZ0lLMTD4Z7NAFQPg",
+    ),
+
+    progress_bar: (
+        symbols: ["", "", "⭘", " ", " "],
+        track_style: (),
+        elapsed_style: (fg: "#567e8c"),
+        thumb_style: (fg: "#800080"),
+    ),
+    scrollbar: (
+        symbols: ["│", "█", "▲", "▼"],
+        track_style: (),
+        ends_style: (),
+        thumb_style: (fg: "#567e8c"),
+    ),
+    browser_column_widths: [20, 38, 42],
+    text_color: "#b7b7e7",
+    background_color: None,
+    header_background_color: None,
+    modal_background_color: None,
+    modal_backdrop: false,
+    tab_bar: (
+        active_style: (fg: "#101030", modifiers: "Bold", bg: "#567e8c"),
+        inactive_style: (fg: "#151a24", bg: None)
+    ),
+    borders_style: (fg: "#151a24"),
+    highlighted_item_style: (kind: Text(">"), fg: "#800080", modifiers: "Bold"),
+    current_item_style: (kind: Text(">"), fg: "#101030", modifiers: "Bold"),
+    highlight_border_style: (fg: "#567e8c"),
+    song_table_format: [
+        (
+            prop: (kind: Property(Artist), style: (fg: "#800080"), default: (kind: Text("Unknown"))),
+            width: "100%",
+            alignment: Right,
+        ),
+        (
+            prop: (kind: Text("-"), style: (fg: "#800080"), default: (kind: Text("Unknown"))),
+            width: "1",
+            alignment: Center,
+        ),
+        (
+            prop: (kind: Property(Title), style: (fg: "#567e8c"), default: (kind: Text("Unknown"))),
+            width: "50%",
+        ),
+    ],
+    header: (
+        rows: [
+            (
+                left: [
+                    (kind: Property(Song(Artist)), style: (fg: "#800080", modifiers: "Bold")),
+                ],
+                center: [
+                    (kind: Property(Song(Title)), style: (fg: "#567e8c", modifiers: "Bold"),
+                        default: (kind: Text("No Song"), style: (fg: "#567e8c", modifiers: "Bold"))
+                    )
+                ],
+                right: [
+                    (kind: Property(Status(Elapsed)), style: (fg: "#b7b7e7")),
+                    (kind: Text("/"), style: (fg: "#151a24")),
+                    (kind: Property(Status(Duration)), style: (fg: "#b7b7e7")),
+                ],
+                bottom: [
+                    (kind: Text(""))
+                ]
+            )
+        ],
+    ),
+)
+

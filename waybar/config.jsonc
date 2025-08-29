@@ -1,0 +1,157 @@
+{
+    "position": "top", 
+    "width": 1910, 
+    "margin-top": 3,
+    "margin-bottom": 1,
+    "spacing": 0, 
+    
+    "modules-left": [
+        "hyprland/workspaces"
+    ],
+
+    "modules-center": [
+        "custom/mpd",
+        "custom/spotify"
+    ],
+
+    "modules-right": [
+        "custom/vpn",
+        "battery",
+        "network",
+        "pulseaudio",
+        "power-profiles-daemon",
+        "cpu",
+        "custom/cpu-temp",
+        "clock"
+    ],
+
+    "clock": {
+        "tooltip-format": "<big>{:%B %Y}</big>\n<tt><small>{calendar}</small></tt>",
+        "format-alt": "{:%d %B, %Y}"
+    },
+
+    "custom/vpn": {
+        "format": "VPN ",
+        "format-alt": "No VPN",
+        "exec": "~/.config/waybar/scripts/check-vpn.sh",
+        "interval": 5,
+        "return-type": "binary"
+    },
+    
+    "custom/poweroff": {
+        "format": "⏻",
+        "on-click": "exec hyprlock",
+        "tooltip-format": "Shutdown"
+    },
+
+    "custom/spotify": {
+        "format": "{}",
+        "interval": 1,
+        "exec": "playerctl -p spotify metadata --format '{{artist}} — {{title}}'",
+        "on-click": "playerctl -p spotify play-pause",
+        "on-scroll-up": "playerctl -p spotify next",
+        "on-scroll-down": "playerctl -p spotify previous",
+        "tooltip": true
+    },
+
+    "custom/mpd": {
+        "format": "{}",
+        "interval": 1,
+        "exec": "echo $(mpc current) | sed 's/&/\\&amp;/g; s/</\\&lt;/g; s/>/\\&gt;/g'",
+        "on-click": "mpc toggle",
+        "on-scroll-up": "mpc prev",
+        "on-scroll-down": "mpc next"
+    },
+
+    "cpu": {
+        "format": "{usage} ",
+        "tooltip-format": "{usage} "
+    },
+
+    "battery": {
+        "interval": 1,
+        "states": {
+            "warning": 30,
+            "critical": 15
+        },
+        "format": "{capacity}%",
+        "format-full": "{capacity}%",
+        "format-charging": "{capacity} ",
+        "format-plugged": "{capacity} ",
+        "format-alt": "{time} {icon}",
+        "format-icons": ["", "", "", "", ""]
+    },
+
+    "custom/cpu-temp": {
+        "format": "{}°C",
+        "exec": "~/.config/waybar/scripts/cpu-temp.sh",
+        "interval": 1,
+        "tooltip": true,
+        "on-click": "kitty watch -n 0.1 sensors"
+    },
+
+    "power-profiles-daemon": {
+      "format": "{icon}",
+      "tooltip-format": "{profile}",
+      "tooltip": true,
+      "format-icons": {
+        "default": "",
+        "performance": "",
+        "balanced": "",
+        "power-saver": ""
+      }
+    },
+
+    "network": {
+        "format-wifi": "",
+        "format-ethernet": "",
+        "format-disconnected": "󰤮",
+	    "on-click": "kitty nmtui",
+        "tooltip-format": "{ssid} ({ip})\nSignal: {signalStrength}%",
+        "tooltip-format-ethernet": "Ethernet ({ip})",
+        "tooltip-format-disconnected": "No connection"
+    },
+
+    "pulseaudio": {
+        "format": "{volume} {icon}",
+        "format-bluetooth": "{volume}% {icon}",
+        "format-bluetooth-muted": " {icon}",
+        "format-muted": "muted",
+        "format-source": "{volume}% ",
+        "format-source-muted": "",
+        "format-icons": {
+            "headphone": "",
+            "hands-free": "",
+            "headset": "",
+            "phone": "",
+            "portable": "",
+            "car": "",
+            "default": ["", "", ""]
+        },
+        "on-click": "pavucontrol"
+    },
+
+    "hyprland/workspaces": {
+        "format": "{icon}",
+        "interval": 0,
+        "format-icons": {
+            "1": "●",
+            "2": "●",
+            "3": "●",
+            "4": "●",
+            "5": "●",
+            "6": "●",
+            "7": "●",
+            "8": "●",
+            "9": "●",
+            "10": "●",
+            "default": "●",
+            "active": "●"
+        },
+        "persistent-workspaces": {
+            "*": 5, 
+            "HDMI-A-1": 5 
+        },
+        "enable-ipc": true
+    }
+}

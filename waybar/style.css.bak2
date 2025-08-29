@@ -1,0 +1,92 @@
+* {
+    font-family: icomoon, JetBrainsMono Nerd Font Propo, sans-serif;
+    font-size: 15px;
+    transition: 0.2s ease-in-out;
+    border-radius: 20px;
+}
+
+window#waybar {
+    background-color: transparent;
+    border-bottom: 3px solid rgba(100, 114, 125, 0);
+    color: #ffffff;
+    transition-property: background-color;
+    transition-duration: .2s;
+}
+
+button:hover {
+    background: inherit;
+    box-shadow: inset 0 -3px #FF6868;
+}
+
+#workspaces {
+    padding: 2px 2px 2px 2px;
+}
+#workspaces button {
+    padding: 0 2px;
+    margin: 0 5px;
+    background-color: transparent;
+    color: #FF6868;
+    font-size: 15px;
+}
+
+#workspaces button:hover {
+    background: rgba(0, 0, 0, 0.1);
+    color: #FF6868;
+    border-radius: 20px;
+}
+
+#workspaces button.focused {
+    background-color: #64727D; 
+    box-shadow: inset 0 -3px #ffffff;
+    background: rgba(0, 0, 0, 0.2);
+    border-radius: 20px;
+}
+
+#workspaces button.active {
+    background: linear-gradient(to right, #C83636, #9A2B2B);
+    color: #FF6868;
+    border-radius: 20px;
+    font-size: 10px;
+    transition: 0.2s ease-in-out;
+}
+
+#clock,
+#battery,
+#cpu,
+#backlight,
+#network,
+#pulseaudio,
+#wireplumber,
+#custom-media,
+#custom-vpn,
+#custom-poweroff,
+#power-profiles-daemon {
+    padding: 0 5px;
+    margin: 0 3px;
+    color: #222; 
+    border-radius: 10px;
+    background: linear-gradient(to right, #FF6868, #9A2B2B);
+}
+
+#custom-spotify {
+    padding: 0 10px;
+    margin: 0 10px;
+    color: #1B5468; /* can replace with #680B0B */
+    font-size: 20px;
+    font-family: JetBrainsMono Nerd Font Propo, sans-serif;
+    background: linear-gradient(to right, #FF6868, #9A2B2B);
+    border-radius: 20px;
+    transition: 0.2s ease-in-out;
+}
+
+#custom-mpd {
+    padding: 0 4px;
+    margin: 0 0px;
+    color: #222; 
+    font-size: 15px;
+    font-family: JetBrainsMono Nerd Font Propo, sans-serif;
+    background: linear-gradient(to right, #FF6868, #9A2B2B);
+    border-radius: 10px;
+    transition: 0.2s ease-in-out;
+}
+
